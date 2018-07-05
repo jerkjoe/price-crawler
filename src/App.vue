@@ -1,22 +1,42 @@
 <template>
-  <div id="app">
+  <div>
+    <v-header :restaurants=restaurants></v-header>
+    <div class="tab border-1px">
+      <div class="tab-item">
+        <router-link to='/goods'>Goods</router-link>
+      </div>
+      <div class="tab-item">
+        <router-link to='/ratings'>Ratings</router-link>
+      </div>
+      <div class="tab-item">
+        <router-link to='/restaurants'>Restaurants</router-link>
+      </div>
+    </div>
     <router-view/>
   </div>
 </template>
 
 <script>
+import Header from './components/header/header.vue'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    'v-header': Header
+  },
+  data() {
+    return {
+      restaurants: {}
+    }
+  },
+  created() {
+    this.$http.get('static/data.json').then(res => {
+      res = res.body
+      this.restaurants = res.seller
+    })
+  },
+  methods: {}
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>

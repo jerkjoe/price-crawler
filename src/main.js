@@ -3,9 +3,12 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-require('../static/css/reset.css')
-Vue.config.productionTip = false
+import VueResource from 'vue-resource'
 
+import 'static/css/reset.css'
+import 'common/stylus/index.styl'
+Vue.config.productionTip = false
+Vue.use(VueResource)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
