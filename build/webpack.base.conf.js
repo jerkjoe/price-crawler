@@ -39,7 +39,8 @@ module.exports = {
       '@': resolve('src'),
       'static': resolve('static'),
       'common': resolve('src/common'),
-      'stylus': resolve('src/common/stylus')
+      'stylus': resolve('src/common/stylus'),
+      'components': resolve('src/components')
     }
   },
   module: {
