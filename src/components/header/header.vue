@@ -70,7 +70,7 @@ export default {
     this.classMap = ['decrease', 'discount', 'special', 'guarantee', 'invoice']
   },
   components: {
-    'star': Star
+    'star': Star 
   }
 }
 </script>
