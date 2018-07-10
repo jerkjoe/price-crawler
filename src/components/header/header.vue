@@ -208,6 +208,8 @@ export default {
         font-weight 700
       .star-wrapper
         margin-top 18px
+        padding 2px 0
+        text-align center
   .detail-close
     position relative
     width 32px
