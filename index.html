@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GT12 | Steve Nash Fitness Clubs</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <style>
+        /* Our Gotham Fonts */
+        @font-face {
+            font-family: gotham-light;
+            src: url(Gotham-Light.otf);
+        }
+        @font-face {
+            font-family: gotham-medium;
+            src: url(Gotham-Light.otf);
+        }
+        @font-face {
+            font-family: gotham-book;
+            src: url(Gotham-Book.otf);
+        }
+        @font-face {
+            font-family: gotham-bold;
+            src: url(Gotham-Bold.otf);
+        }
+        @font-face {
+            font-family: gotham-medium-italic;
+            src: url(Gotham-MediumItalic.otf);
+        }
+
+        /* reset */
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+            font-family: 'gotham-light'
+        }
+        h1,h2,h3,h4,h5,h6 {
+            text-transform: uppercase;
+        }
+
+
+        /* margin block */
+        .margin-block {
+            margin-top: 60px;
+        }
+
+        /* hero area */
+        .hero {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            font-size: 0;
+        }
+        .hero > nav {
+            position: absolute;
+            top: 30px;
+            left: 10%;
+            z-index: 11;
+        }
+        .hero > video {
+            /* position: fixed; */
+            width: 100%;
+            height: auto;
+            object-fit: fill;
+
+        }
+        .hero>img {
+                display: none;
+            }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(0,0,0,0.6);
+            width: 100%;
+            height: 100%;
+        }
+        .text {
+            letter-spacing: 1.5px;
+            /* position: fixed; */
+            position:absolute;
+            left: 25%;
+            top: 30%;
+            color: white;
+            width: 50%;
+            font-size: 18px;
+        }
+
+        @media screen and (min-width: 1600px) {
+            .text {
+                top: 450px;
+            }
+        }
+        @media screen and (max-width: 1600px) {
+            .text {
+                top: 300px;
+            }
+        }
+        @media screen and (max-width: 1300px) {
+            .text {
+                top: 200px;
+            }
+        }
+        @media screen and (max-width: 1100px) {
+            .text {
+                top: 150px;
+            }
+        }
+
+
+        .text > * {
+            margin-bottom: 30px;
+        }
+        .text > h1 {
+            font-family: 'gotham-bold';
+            font-size: 48px;
+        }
+        .text > h1> strong {
+            font-family: inherit;
+        }
+        .text > p {
+            line-height: 1.5;
+        }
+
+       
+
+        /* Fifty blocks style */
+        .fifty-fifty-block {
+            font-size: 0;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin: 0 auto;
+        }
+        .fifty-fifty-block > .text-wrapper, .fifty-fifty-block > .image-wrapper {
+            flex: 50%;
+        }
+        .fifty-fifty-block > .image-wrapper > img {
+            width: 100%;
+        }
+        .fifty-fifty-block > .text-wrapper {
+            box-sizing: border-box;
+            padding: 40px;
+            text-align: center;
+        }
+        .fifty-fifty-block > .text-wrapper > h3 {
+            font-size: 32px;
+            line-height: 3;
+            margin-bottom: 24px;
+        }
+        .fifty-fifty-block > .text-wrapper > p {
+            width: 100%;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        /* style for accordion */
+        .full-width {
+            background-color: #000;
+            width: 100%;
+        }
+        h2 {
+            width: 80%;
+            margin: 0 auto;
+            color: white;
+            padding: 20px 10px;
+            font-size: 32px;
+        }
+
+        .accordion {
+            list-style: none;
+            width: 100%;
+            /* margin: 40px auto; */
+            border-bottom: transparent;
+            background-color: #222;
+        }
+        .accordion>li{
+            border-top: 1px solid rgba(255,255,255,0.3);
+        }
+        .accordion>li>div.content {
+            background-color: white;
+            transition: max-height .3s;
+            overflow: hidden;
+            max-height: 0;
+            padding: 0 10%;
+            display: flex;
+            justify-content: space-between
+        }
+        .accordion>li>div.content>p{
+            padding: 20px 40px;
+            margin-left: 40px;
+        }
+
+        .accordion>li>div.title-container {
+            background-color: #000;
+            width: 100%;
+        }
+        .accordion>li>div.title-container>h3 {
+            margin: 0 auto;
+            width: 80%;
+            font-size: 24px;
+            line-height: 2;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            color: rgb(245, 245, 245);
+        }
+
+
+        .accordion>li.active>div.content {
+            padding: 80px 10%;
+            line-height: 2;
+            max-height: 450px;
+        }
+
+        .accordion>li:hover {
+            cursor: pointer;
+        }
+        /* accordion end */
+
+
+        /* HubSpot Form Modification */
+        .hubspot-container {
+            background-color: #000000;
+            padding: 30px 0;
+        }
+        #hsForm_d139d6a1-d286-4a84-a6d6-64f0cf18796e {
+            display: flex;
+            justify-content: space-around;
+        }
+        form>.hs_email {
+            width: 60%;
+        }
+        .hs_email > label {
+            display: none; 
+        }
+
+        .input>input {
+            display: inline-block;
+            height: 44px;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px 30px;
+        }
+        .hs-error-msgs.inputs-list {
+            color: red;
+            list-style:none;
+        }
+
+        .hs_error_rollup {
+            display: none !important;
+        }
+        form>.hs_submit {
+            height: 44px;
+            width: 30%;
+        }
+      .hubspot {
+          width: 80%;
+          margin: 20px auto;
+      }
+      body input[type="submit"] {
+          display: inline-block;
+          height: 100%;
+          padding: 10px 10px;
+          color: white;
+          background-color: #666;
+          font-size: 20px;
+          border: 1px solid #666;
+          box-shadow: 0 0 2px 0  #e3e3e3;
+      }
+      body input[type="submit"]:hover {
+          background-color: #444;
+          cursor: pointer;
+      }
+      /* footer */
+      footer {
+            border-top: 1px solid white;
+            padding: 40px 0;
+            background-color: #242424;
+            text-align: center;
+        }
+
+        footer>p {
+            width: 80%;
+            margin: 0 auto;
+            color: white;
+        }
+        .social {
+            padding: 20px 0;
+        }
+        .social > a {
+            font-size: 24px;
+            margin-right: 20px;
+        }
+        .social > a > i {
+            color: white;
+        }
+
+        
+        @media screen and (max-width: 960px) {
+            
+
+            /* 50/50 blocks */
+            .fifty-fifty-block {
+                flex-direction: column;
+                margin-bottom: 20px;
+                border-bottom: 1px solid #e3e3e3;
+            }
+            .fifty-fifty-block > .image-wrapper, .fifty-fifty-block>.text-wrapper {
+                width: 100%;
+                margin-bottom: 20px;
+                padding: 5px;
+            }
+            .fifty-fifty-block > .text-wrapper > h3 {
+                font-size: 28px;
+                line-height: 2;
+            }
+            .fifty-fifty-block > .text-wrapper > p {
+                font-size: 15px;
+                text-align: justify;
+            }
+        
+
+        /* accordion */
+        /* .accordion {
+            width: 90%;
+        }
+        .accordion>li>h3 {
+            font-size: 20px;
+            padding: 10px 20px;
+        }
+        .accordion>li.active>p {
+            font-size: 14px;
+            padding: 20px;
+        } */
+
+        .accordion>li.active>div.content {
+            padding: 20px 20px;
+            line-height: 2;
+            max-height: 1000px;
+            flex-wrap: wrap;
+        }
+        .accordion>li.active>div.content>* {
+            width: 100%;
+        }
+        .accordion>li.active>div.content>p {
+            padding-left: 0;
+        }
+
+
+        /* margin block */
+        .margin-block {
+            margin-top: 20px;
+        }
+
+
+        /* hero area */
+
+        video {
+                display: none;
+            }
+        .hero>img {
+                display: inline-block;
+            }
+        .overlay{
+               background-color: rgba(255,255,255,.6);
+            }
+        .hero > nav {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 11;
+            width: 40%;
+        }
+        .hero > nav > a > img {
+            width: 100%
+        }
+
+        
+        .text {
+            letter-spacing: 1.5px;
+            position: absolute;
+            top: 30%;
+            left: 0;
+            text-align: center;
+            color: black;
+            width: 100%;
+            font-size: 16px;
+        }
+        .text > * {
+            margin-bottom: 30px;
+        }
+        .text > h1 {
+            font-family: 'gotham-bold';
+            font-size: 28px;
+        }
+        .text > h1> strong {
+            font-family: inherit;
+        }
+        .text > p {
+            margin-top: 40px;
+            line-height: 1.5;
+        }
+        
+        /* footer */
+        footer {
+            border-top: 1px solid white;
+            padding: 40px 0;
+            background-color: #242424;
+            text-align: center;
+        }
+
+        footer>p {
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        .social {
+            padding: 20px 0;
+        }
+        .social > a {
+            font-size: 20px;
+            margin-right: 12px;
+        }
+        .social > a > i {
+            color: white;
+        }
+
+
+        /* hubspot */
+
+        /* HubSpot Form Modification */
+        .hubspot-container {
+            background-color: #000000;
+            padding: 10px 0;
+        }
+        #hsForm_d139d6a1-d286-4a84-a6d6-64f0cf18796e {
+            flex-direction: column;
+        }
+        form>.hs_email {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        .actions {
+            text-align: center;
+        }
+        .hs_email > .input, .input>input {
+            display: block;
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .hs-error-msgs.inputs-list {
+            color: red;
+            list-style:none;
+        }
+
+        .hs_error_rollup {
+            display: none !important;
+        }
+        .input>input {
+            padding: 5px 10px;
+        }
+        form>.hs_submit {
+            width: 100%
+        }
+      .hubspot {
+          width: 80%;
+          margin: 20px auto;
+      }
+      body input[type="submit"] {
+          padding: 4px 8px;
+          color: white;
+          font-size: 16px;
+      }
+      body input[type="submit"]:hover {
+          background-color: #666;
+          cursor: pointer;
+      }
+    }
+
+    
+    </style>
+
+    <div class="hero">
+        <nav>
+            <a href="https://snclubs.com"><img src="https://www.snclubs.com/content/themes/sn/images/steve-nash-logo.png"
+                    alt="sn-logo"></a>
+        </nav>
+        <video autoplay='autoplay' loop muted>
+            <source src="https://www.snclubs.com/content/themes/sn/videos/sn_beyond_summer_web_notext2.mp4" type="video/mp4">
+        </video>
+        <img src="https://www.snclubs.com/content/themes/sn/images/sn_homepage_mobile_banner.jpg" alt="">
+        <div class="overlay"></div>
+        <div class="text">
+            <h1>Introducing to our new <strong>GT12</strong> program!</h1>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat odit quis id exercitationem vel
+                obcaecati voluptatem, aliquam au saepe beatae illo.</p>
+        </div>
+    </div>
+    <div class="hubspot-container">
+        <div class="hubspot">
+            <!--[if lte IE 8]>
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+            <![endif]-->
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+            <script>
+                hbspt.forms.create({
+                    portalId: "2538549",
+                    formId: "d139d6a1-d286-4a84-a6d6-64f0cf18796e"
+                });
+            </script>
+        </div>
+    </div>
+
+
+    <div class="margin-block"></div>
+
+    <!-- 
+        50/50 Blocks: including image and text content
+        parallel on desktop and vertically displayed on mobile
+    -->
+    <div class="fifty-fifty-block">
+        <div class="image-wrapper">
+            <img src="https://picsum.photos/g/1000/1000" alt="">
+        </div>
+        <div class="text-wrapper">
+            <h3 class="title">The Program</h3>
+            <p class="content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque optio quae quaerat
+                dignissimos eligendi rem incidunt quas perferendis tempora quia! Quibusdam mollitia minima dolore
+                corrupti ipsam fugiat suscipit autem impedit?</p>
+        </div>
+    </div>
+
+    <div class="fifty-fifty-block">
+        <div class="text-wrapper">
+            <h3 class="title">The Benefits</h3>
+            <p class="content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque optio quae quaerat
+                dignissimos eligendi rem incidunt quas perferendis tempora quia! Quibusdam mollitia minima dolore
+                corrupti ipsam fugiat suscipit autem impedit?</p>
+        </div>
+        <div class="image-wrapper">
+            <img src="https://picsum.photos/g/1000/1000" alt="">
+        </div>
+    </div>
+
+    <div class="margin-block">
+    </div>
+    <div class="full-width">
+        <h2>
+            Programs
+        </h2>
+    </div>
+
+    <ul class="accordion">
+        <li class="">
+            <div class="title-container">
+                <h3>Option 1 <span>+</span></h3>
+            </div>
+            <div class="content">
+                <img src="https://picsum.photos/g/300/300" alt="">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut et at illum nesciunt ab magni ducimus
+                    tempore ipsum, quasi alias reprehenderit, deleniti labore necessitatibus quibusdam obcaecati eaque.
+                    Quis, esse a?
+                </p>
+            </div>
+        </li>
+        <li>
+            <div class="title-container">
+                <h3>Option 2 <span>+</span></h3>
+            </div>
+            <div class="content">
+                <img src="https://picsum.photos/g/300/300" alt="">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut et at illum nesciunt ab magni ducimus
+                    tempore ipsum, quasi alias reprehenderit, deleniti labore necessitatibus quibusdam obcaecati eaque.
+                    Quis, esse a?
+                </p>
+            </div>
+        </li>
+        <li>
+            <div class="title-container">
+                <h3>Option 3<span>+</span></h3>
+            </div>
+
+            <div class="content">
+                <img src="https://picsum.photos/g/300/300" alt="">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut et at illum nesciunt ab magni ducimus
+                    tempore ipsum, quasi alias reprehenderit, deleniti labore necessitatibus quibusdam obcaecati eaque.
+                    Quis, esse a?
+                </p>
+            </div>
+        </li>
+        <li>
+            <div class="title-container">
+                <h3>Option 4<span>+</span></h3>
+            </div>
+            <div class="content">
+                <img src="https://picsum.photos/g/300/300" alt="">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut et at illum nesciunt ab magni ducimus
+                    tempore ipsum, quasi alias reprehenderit, deleniti labore necessitatibus quibusdam obcaecati eaque.
+                    Quis, esse a?
+                </p>
+            </div>
+        </li>
+        <li>
+            <div class="title-container">
+                <h3>Option 5<span>+</span></h3>
+            </div>
+
+
+            <div class="content">
+                <img src="https://picsum.photos/g/300/300" alt="">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut et at illum nesciunt ab magni ducimus
+                    tempore ipsum, quasi alias reprehenderit, deleniti labore necessitatibus quibusdam obcaecati eaque.
+                    Quis, esse a?
+                </p>
+            </div>
+        </li>
+    </ul>
+    <div class="margin-block"></div>
+
+    <div class="hubspot-container">
+        <div class="hubspot">
+            <!--[if lte IE 8]>
+                <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+                <![endif]-->
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+            <script>
+                hbspt.forms.create({
+                    portalId: "2538549",
+                    formId: "d139d6a1-d286-4a84-a6d6-64f0cf18796e"
+                });
+            </script>
+        </div>
+    </div>
+    <style>
+
+    </style>
+    <footer>
+        <div class="social">
+            <a class="tw social-icon" href="https://twitter.com/snfcservices" target="_blank"><i class="fa fa-twitter"></i></a>
+            <a class="fb social-icon" href="https://facebook.com/stevenashfitnessclubs" target="_blank"><i class="fa fa-facebook"></i></a>
+            <a class="yt social-icon" href="https://www.youtube.com/user/stevenashfitness" target="_blank"><i class="fa fa-youtube"></i></a>
+            <a class="gp social-icon" href="https://plus.google.com/+stevenashfitnessworld/about" target="_blank"><i
+                    class="fa fa-google-plus"></i></a>
+            <a class="in social-icon" href="https://instagram.com/stevenashfitnessclubs/" target="_blank"><i class="fa fa-instagram"></i></a>
+            <a class="ln social-icon" href="https://www.linkedin.com/company/423477?trk=tyah&amp;trkInfo=idx%3A1-1-1%2CtarId%3A1426094143509%2Ctas%3Asteve+nash+sp"
+                target="_blank"><i class="fa fa-linkedin"></i></a>
+        </div>
+        <p>
+            © 2018 SNFW Fitness B.C. Ltd. | All Rights Reserved | <a href="https://snclubs.com/privacy-policy/" style="color:white;">Privacy
+                Policy</a>
+        </p>
+    </footer>
+
+    <script>
+
+        // Accordion Code
+        var accordionItems = Array.from(document.querySelectorAll('.accordion>li'))
+        // var previousOpened = accordionItems[0]
+        accordionItems.forEach(function (e) {
+            e.addEventListener('click', function (e) {
+                // e.currentTarget.className = 'active'
+                // e.currentTarget.querySelector('span').innerText = '-'
+                // if (previousOpened !== e.currentTarget) {
+                //     previousOpened.className = ''
+                //     previousOpened.querySelector('span').innerText = '+'
+                //     previousOpened = e.currentTarget
+                // }
+                // else {
+                //     previousOpened.className = ''
+                //     previousOpened.querySelector('span').innerText = '+'
+                //     previousOpened = null
+                // }
+                console.log(e.currentTarget.className)
+
+                if (e.currentTarget.className === 'active') {
+                    e.currentTarget.className = ''
+                    e.currentTarget.querySelector('span').innerText = '+'
+                    console.log('hi')
+                }
+                else {
+                    e.currentTarget.className = 'active'
+                    e.currentTarget.querySelector('span').innerText = '-'
+                }
+
+                // console.log(previousOpened)
+            })
+        })
+        setTimeout(function () {
+            console.log(document.querySelector('body input[type="submit"]'))
+        }, 5000)
+    </script>
+</body>
+
+</html>
