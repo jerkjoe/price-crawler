@@ -32,7 +32,8 @@
     wp_body_open();
     ?>
 
-    <header id="site-header" class="header-footer-group" role="banner">
+    <header id="site-header" class="header-footer-group" role="banner"
+        style="position: fixed; width: 100%; background-color: #fff; z-index:9999">
 
         <div class="header-inner section-inner">
 
@@ -80,7 +81,8 @@
 
 
     </header><!-- #site-header -->
+    <div style="padding-bottom: 63px;">
 
-    <?php
+    </div> <?php
     // Output the menu modal.
     get_template_part('template-parts/modal-menu');

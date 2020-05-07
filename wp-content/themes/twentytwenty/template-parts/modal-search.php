@@ -8,7 +8,7 @@
  */
 
 ?>
-<div style="margin-top: 63px;" class="search-modal cover-modal header-footer-group"
+<div style="z-index: 9999;" class="search-modal cover-modal header-footer-group"
     data-modal-target-string=".search-modal">
 
     <div class="search-modal-inner modal-inner">
