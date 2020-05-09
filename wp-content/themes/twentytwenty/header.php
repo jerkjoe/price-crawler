@@ -83,6 +83,7 @@
     </header><!-- #site-header -->
     <div style="padding-bottom: 63px;">
 
-    </div> <?php
+    </div>
+    <?php
     // Output the menu modal.
     get_template_part('template-parts/modal-menu');
