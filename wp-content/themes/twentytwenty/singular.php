@@ -46,26 +46,6 @@ get_header();
 
 
         <?php
-        // function returnId($item) {
-        //     return $item -> term_id;
-        // };
-        // $category_ids = array_map('returnId', $categories);
-        // print_r($category_ids);
-        // $args = array(
-        //     'post_status' => 'publish',
-        //     'tax_query' => array(
-        //          'taxonomy' => 'product_cat',
-        //          'field'    => 'term_id',
-        //          'terms'     =>  [19], // When you have more term_id's seperate them by komma.
-        //          'operator'  => 'IN'
-        //          )
-        //     );
-        //     $the_query = new WP_Query($args);
-
-        //     foreach ($the_query as $item) {
-        //         print_r($item);
-        //         print_r('------113123123123123123123---<br><br><br>');
-        //     }
         foreach ($categories as $product_category) {
             echo '<h4 style="text-align: center;"><a href="' . get_term_link($product_category) . '">' . $product_category->name . '</a></h4>';
             $args = array(
