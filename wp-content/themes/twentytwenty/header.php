@@ -81,8 +81,7 @@
 
 
     </header><!-- #site-header -->
-    <div style="padding-bottom: 63px;">
-
+    <div class="header-gap" style="padding-bottom: 63px;">
     </div>
     <?php
     // Output the menu modal.
