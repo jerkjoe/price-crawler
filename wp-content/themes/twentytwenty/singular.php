@@ -16,9 +16,7 @@ get_header();
 <?php echo do_shortcode('[metaslider id="10"]'); ?>
 <main id="site-content" role="main">
     <?php
-    $allMenuItems = get_post_meta(get_the_ID(), 'menu-item', false);
-
-    if (sizeof($allMenuItems) > 0) {
+    
     ?>
         <div class="menu-item-wrapper" style="display: flex; flex-wrap: wrap; justify-content: center; padding: 0px 20px;">
 
@@ -35,7 +33,7 @@ get_header();
                     </span>
                 </a>
         <?php
-            }
+            
         }
         ?>
         </div>

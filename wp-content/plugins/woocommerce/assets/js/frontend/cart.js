@@ -301,13 +301,36 @@ jQuery( function( $ ) {
 				'.woocommerce-cart-form .cart_item :input',
 				this.input_changed );
 
-			$( '.woocommerce-cart-form :input[name="update_cart"]' ).prop( 'disabled', true );
+            $( '.woocommerce-cart-form :input[name="update_cart"]' ).prop( 'disabled', true );
+            
+            // $( document ).on(
+			// 	'click',
+			// 	'#minus-one',
+			// 	function(e) {
+            //         e.preventDefault()
+            //         $('input.qty').val($('input.qty').val() - 0 - 1)
+            //         $('input.qty').trigger('change')
+            //     });
+                
+                
+            // $( document ).on(
+            //     'click',
+            //     '#add-one',
+            //     function(e) {
+            //         e.preventDefault()
+            //         $('input.qty').val($('input.qty').val() - 0 + 1)
+            //         $('input.qty').trigger('change')
+            //     });
+
+               
+            // })
 		},
 
 		/**
 		 * After an input is changed, enable the update cart button.
 		 */
 		input_changed: function() {
+            console.log('input_changed')
 			$( '.woocommerce-cart-form :input[name="update_cart"]' ).prop( 'disabled', false );
 		},
 
@@ -366,7 +389,7 @@ jQuery( function( $ ) {
 		 * to catch the event before that happens.
 		 */
 		input_keypress: function( evt ) {
-
+            console.log('input_keypress')
 			// Catch the enter key and don't let it submit the form.
 			if ( 13 === evt.keyCode ) {
 				var $form = $( evt.currentTarget ).parents( 'form' );
@@ -390,6 +413,7 @@ jQuery( function( $ ) {
 		 * @param {Object} evt The JQuery event
 		 */
 		cart_submit: function( evt ) {
+            console.log('cart_submit')
 			var $submit  = $( document.activeElement ),
 				$clicked = $( ':input[type=submit][clicked=true]' ),
 				$form    = $( evt.currentTarget );
@@ -407,9 +431,10 @@ jQuery( function( $ ) {
 			if ( is_blocked( $form ) ) {
 				return false;
 			}
-
+            console.log('1312312:', $submit)
 			if ( $clicked.is( ':input[name="update_cart"]' ) || $submit.is( 'input.qty' ) ) {
-				evt.preventDefault();
+                evt.preventDefault();
+                console.log(123123121212313121)
 				this.quantity_update( $form );
 
 			} else if ( $clicked.is( ':input[name="apply_coupon"]' ) || $submit.is( '#coupon_code' ) ) {
@@ -424,6 +449,7 @@ jQuery( function( $ ) {
 		 * @param {Object} evt The JQuery event
 		 */
 		submit_click: function( evt ) {
+            console.log('submit_click')
 			$( ':input[type=submit]', $( evt.target ).parents( 'form' ) ).removeAttr( 'clicked' );
 			$( evt.target ).attr( 'clicked', 'true' );
 		},

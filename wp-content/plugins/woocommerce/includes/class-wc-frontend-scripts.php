@@ -237,7 +237,7 @@ class WC_Frontend_Scripts {
 				'version' => $version,
 			),
 			'wc-cart'                    => array(
-				'src'     => self::get_asset_url( 'assets/js/frontend/cart' . $suffix . '.js' ),
+				'src'     => self::get_asset_url( 'assets/js/frontend/cart' . '.js' ),
 				'deps'    => array( 'jquery', 'woocommerce', 'wc-country-select', 'wc-address-i18n' ),
 				'version' => $version,
 			),
@@ -262,7 +262,7 @@ class WC_Frontend_Scripts {
 				'version' => $version,
 			),
 			'wc-add-to-cart'             => array(
-				'src'     => self::get_asset_url( 'assets/js/frontend/add-to-cart' . $suffix . '.js' ),
+				'src'     => self::get_asset_url( 'assets/js/frontend/add-to-cart' . '.js' ),
 				'deps'    => array( 'jquery', 'jquery-blockui' ),
 				'version' => $version,
 			),

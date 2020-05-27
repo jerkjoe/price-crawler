@@ -17,7 +17,22 @@ jQuery( function( $ ) {
 			.on( 'click', '.add_to_cart_button', { addToCartHandler: this }, this.onAddToCart )
 			.on( 'click', '.remove_from_cart_button', { addToCartHandler: this }, this.onRemoveFromCart )
 			.on( 'added_to_cart', this.updateButton )
-			.on( 'added_to_cart removed_from_cart', { addToCartHandler: this }, this.updateFragments );
+			.on( 'added_to_cart removed_from_cart', { addToCartHandler: this }, this.updateFragments ).on(
+                'click',
+                '#add-one',
+                function(e) {
+                    e.preventDefault()
+                    $('input.qty').val($('input.qty').val() - 0 + 1)
+                    $('input.qty').trigger('change')
+                })
+            .on(
+                'click',
+                '#minus-one',
+                function(e) {
+                    e.preventDefault()
+                    $('input.qty').val($('input.qty').val() - 0 - 1)
+                    $('input.qty').trigger('change')
+                });
 	};
 
 	/**

@@ -380,7 +380,19 @@ function twentytwenty_sidebar_registration() {
 				'description' => __( 'Widgets in this area will be displayed in the second column in the footer.', 'twentytwenty' ),
 			)
 		)
-	);
+    );
+    
+    // Util #1.
+	register_sidebar(
+		array_merge(
+			$shared_args,
+			array(
+				'name'        => __( 'Util #1', 'twentytwenty' ),
+				'id'          => 'util-1',
+				'description' => __( 'Util 1.', 'twentytwenty' ),
+			)
+		)
+    );
 
 }
 

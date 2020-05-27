@@ -215,14 +215,22 @@ $test_img = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOA
     <div class="close-add-to-cart" onclick="closeAddToCart()">
         <img data-v-3125a6b3="" src="<?php echo($test_img); ?>">
     </div>
+    
     <?php 
-        woocommerce_variable_add_to_cart();
+        woocommerce_template_single_add_to_cart();
+        // woocommerce_simple_add_to_cart();
     ?>
 </div>
 <div class="button-container">
-    <button onclick="">
-        购物车
-    </button>
+    <?php 
+        global $woocommerce;
+        $cart_page_url = function_exists( 'wc_get_cart_url' ) ? wc_get_cart_url() : $woocommerce->cart->get_cart_url();
+    ?>
+    <a href="<?php echo($cart_page_url); ?>">
+        <button>
+            购物车
+        </button>
+    </a>
     <button class="open-form">
         加入购物车
     </button>
