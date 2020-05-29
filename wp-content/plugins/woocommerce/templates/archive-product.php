@@ -108,9 +108,61 @@ foreach ($product_cat as $parent_product_cat) {
 <script>
     console.log(123)
 </script>
+<style>
+    
+    .woocommerce ul.products li.product {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        flex-direction: row;
+        border-bottom: 1px solid #e3e3e3;
+        padding-bottom: 20px;
+    }    
+    ul.products li.product .woocommerce-loop-product__link {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+    ul.products li.product .woocommerce-loop-product__link > img {
+        width: 120px;
+        object-fit: cover;
+        height: 120px;
+    }
+    ul.products li.product .woocommerce-loop-product__link > div {
+        flex: 1;
+        margin-left: 20px;
+    }
+    ul.products li.product .button {
+        padding: 10px;
+    }
+</style>
 <?php
+add_action( 'bottom_nav_bar', 'add_bottom_nav_bar');
+function add_bottom_nav_bar() {
+    ?>
+        <style>
+            .bottom-nav {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                background-color: #fff;
+                border-top: 2px solid #e3e3e3;
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+                padding: 20px 10px;
+            }
+        </style>
+        <div class="bottom-nav">
+            <a href="<?php echo get_home_url(); ?>" class="nav-item">首页</a>
+            <a href="<?php echo get_permalink( wc_get_page_id( 'shop' ) ); ?>" class="nav-item">分类</a>
+            <a href="<?php echo get_permalink( wc_get_page_id( 'cart' ) ); ?>" class="nav-item">购物车</a>
+            <a href="<?php echo get_permalink( wc_get_page_id( 'myaccount' ) ); ?>" class="nav-item">我的</a>
+        </div>
+    <?php
+}
 if ($queries['category'] != '') {
     echo do_shortcode('[product_category category="' . $queries['category'] . '" per_page="2" columns="3" orderby="date" order="desc" paginate=true]');
+    do_action('bottom_nav_bar');
 } else {
 ?>
     <style>
@@ -126,6 +178,7 @@ if ($queries['category'] != '') {
         }
 
         #left {
+            width: 160px;
             overflow: auto;
             border-right: 1px solid #e3e3e3;
             background-color: #f0f2f5;
@@ -152,11 +205,17 @@ if ($queries['category'] != '') {
             padding: 10px 14px;
             border-bottom: 1px solid #e9e9e9;
         }
+        .category-item.active {
+            font-weight: bold;
+            color: red;
+        }
+        
     </style>
 
 
     <script>
         var categories = <?php echo json_encode($product_cat) ?>;
+        var pre = null
         document.addEventListener('DOMContentLoaded', function() {
             console.log(123123123)
             console.log(categories)
@@ -189,6 +248,11 @@ if ($queries['category'] != '') {
                 Array.from(document.querySelectorAll('.right-container')).forEach(e => {
                     e.style.display = 'none'
                 })
+                if(pre) {
+                    pre.classList.remove('active')
+                }
+                el.classList.add('active')
+                pre = el
                 document.querySelector(selector).style.display = 'flex'
             })
             return el
