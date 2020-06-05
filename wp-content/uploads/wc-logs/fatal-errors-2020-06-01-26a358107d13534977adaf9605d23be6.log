@@ -1,0 +1,16 @@
+2020-06-01T01:08:09+00:00 CRITICAL syntax error, unexpected '<', expecting end of file in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-my-account.php on line 18
+
+2020-06-01T01:53:57+00:00 CRITICAL Uncaught Error: Object of class WP_User could not be converted to string in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\woocommerce\myaccount\my-account.php:34
+Stack trace:
+#0 E:\XAMPP\htdocs\wordpress\wp-content\plugins\woocommerce\includes\wc-core-functions.php(251): include()
+#1 E:\XAMPP\htdocs\wordpress\wp-content\plugins\woocommerce\includes\shortcodes\class-wc-shortcode-my-account.php(123): wc_get_template('myaccount/my-ac...', Array)
+#2 E:\XAMPP\htdocs\wordpress\wp-content\plugins\woocommerce\includes\shortcodes\class-wc-shortcode-my-account.php(72): WC_Shortcode_My_Account::my_account('')
+#3 E:\XAMPP\htdocs\wordpress\wp-content\plugins\woocommerce\includes\class-wc-shortcodes.php(72): WC_Shortcode_My_Account::output('')
+#4 E:\XAMPP\htdocs\wordpress\wp-content\plugins\woocommerce\includes\class-wc-shortcodes.php(115): WC_Shortcodes::shortcode_wrapper(Array, '')
+#5 E:\XAMPP\htdocs\wordpress\wp-includes\shortcodes.php(343): WC_Shortcodes::my_account('', '', 'woocommerce_my_...')
+#6 [internal in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\woocommerce\myaccount\my-account.php on line 34
+
+2020-06-01T02:12:16+00:00 CRITICAL syntax error, unexpected ':' in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\woocommerce\myaccount\orders.php on line 113
+
+2020-06-01T02:30:32+00:00 CRITICAL syntax error, unexpected 'switch' (T_SWITCH) in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\woocommerce\myaccount\orders.php on line 32
+
