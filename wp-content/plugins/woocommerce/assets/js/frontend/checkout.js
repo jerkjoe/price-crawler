@@ -457,6 +457,7 @@ jQuery( function( $ ) {
 			wc_checkout_form.blockOnSubmit( $( this ) );
 		},
 		submit: function() {
+            console.log(12312312312312312312312)
 			wc_checkout_form.reset_update_checkout_timer();
 			var $form = $( this );
 
