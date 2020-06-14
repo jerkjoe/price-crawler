@@ -1,0 +1,32 @@
+2020-06-14T00:22:20+00:00 CRITICAL Uncaught Error: Object of class WC_Gateway_COD could not be converted to string in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php:25
+Stack trace:
+#0 E:\XAMPP\htdocs\wordpress\wp-includes\template-loader.php(106): include()
+#1 E:\XAMPP\htdocs\wordpress\wp-blog-header.php(19): require_once('E:\\XAMPP\\htdocs...')
+#2 E:\XAMPP\htdocs\wordpress\index.php(17): require('E:\\XAMPP\\htdocs...')
+#3 {main}
+  thrown in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php on line 25
+
+2020-06-14T00:43:28+00:00 CRITICAL Uncaught Error: Object of class WC_Session_Handler could not be converted to string in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php:346
+Stack trace:
+#0 E:\XAMPP\htdocs\wordpress\wp-includes\template-loader.php(106): include()
+#1 E:\XAMPP\htdocs\wordpress\wp-blog-header.php(19): require_once('E:\\XAMPP\\htdocs...')
+#2 E:\XAMPP\htdocs\wordpress\index.php(17): require('E:\\XAMPP\\htdocs...')
+#3 {main}
+  thrown in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php on line 346
+
+2020-06-14T00:48:12+00:00 CRITICAL Uncaught Error: Cannot use object of type WC_Gateway_COD as array in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php:348
+Stack trace:
+#0 E:\XAMPP\htdocs\wordpress\wp-includes\template-loader.php(106): include()
+#1 E:\XAMPP\htdocs\wordpress\wp-blog-header.php(19): require_once('E:\\XAMPP\\htdocs...')
+#2 E:\XAMPP\htdocs\wordpress\index.php(17): require('E:\\XAMPP\\htdocs...')
+#3 {main}
+  thrown in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php on line 348
+
+2020-06-14T00:48:32+00:00 CRITICAL Uncaught Error: Object of class WC_Gateway_COD could not be converted to string in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php:349
+Stack trace:
+#0 E:\XAMPP\htdocs\wordpress\wp-includes\template-loader.php(106): include()
+#1 E:\XAMPP\htdocs\wordpress\wp-blog-header.php(19): require_once('E:\\XAMPP\\htdocs...')
+#2 E:\XAMPP\htdocs\wordpress\index.php(17): require('E:\\XAMPP\\htdocs...')
+#3 {main}
+  thrown in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php on line 349
+

@@ -1,0 +1,92 @@
+2020-06-12T00:02:21+00:00 CRITICAL syntax error, unexpected '.' in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php on line 60
+
+2020-06-12T00:39:57+00:00 CRITICAL Uncaught Error: Call to a member function get_formatted_name() on bool in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php:135
+Stack trace:
+#0 E:\XAMPP\htdocs\wordpress\wp-includes\template-loader.php(106): include()
+#1 E:\XAMPP\htdocs\wordpress\wp-blog-header.php(19): require_once('E:\\XAMPP\\htdocs...')
+#2 E:\XAMPP\htdocs\wordpress\index.php(17): require('E:\\XAMPP\\htdocs...')
+#3 {main}
+  thrown in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php on line 135
+
+2020-06-12T00:41:10+00:00 CRITICAL Uncaught Error: Call to a member function get_formatted_name() on bool in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php:135
+Stack trace:
+#0 E:\XAMPP\htdocs\wordpress\wp-includes\template-loader.php(106): include()
+#1 E:\XAMPP\htdocs\wordpress\wp-blog-header.php(19): require_once('E:\\XAMPP\\htdocs...')
+#2 E:\XAMPP\htdocs\wordpress\index.php(17): require('E:\\XAMPP\\htdocs...')
+#3 {main}
+  thrown in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php on line 135
+
+2020-06-12T00:49:48+00:00 CRITICAL syntax error, unexpected end of file in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php on line 212
+
+2020-06-12T00:50:10+00:00 CRITICAL syntax error, unexpected end of file in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php on line 193
+
+2020-06-12T00:51:29+00:00 CRITICAL syntax error, unexpected end of file in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php on line 214
+
+2020-06-12T01:43:25+00:00 CRITICAL Uncaught Error: Object of class WC_Shipping could not be converted to string in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php:236
+Stack trace:
+#0 E:\XAMPP\htdocs\wordpress\wp-includes\template-loader.php(106): include()
+#1 E:\XAMPP\htdocs\wordpress\wp-blog-header.php(19): require_once('E:\\XAMPP\\htdocs...')
+#2 E:\XAMPP\htdocs\wordpress\index.php(17): require('E:\\XAMPP\\htdocs...')
+#3 {main}
+  thrown in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php on line 236
+
+2020-06-12T01:54:57+00:00 CRITICAL syntax error, unexpected ';', expecting ')' in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php on line 234
+
+2020-06-12T02:19:18+00:00 CRITICAL Uncaught Error: Call to a member function init() on array in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php:247
+Stack trace:
+#0 E:\XAMPP\htdocs\wordpress\wp-includes\template-loader.php(106): include()
+#1 E:\XAMPP\htdocs\wordpress\wp-blog-header.php(19): require_once('E:\\XAMPP\\htdocs...')
+#2 E:\XAMPP\htdocs\wordpress\index.php(17): require('E:\\XAMPP\\htdocs...')
+#3 {main}
+  thrown in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php on line 247
+
+2020-06-12T02:33:41+00:00 CRITICAL Uncaught Error: Object of class WC_Shipping_Rate could not be converted to string in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php:240
+Stack trace:
+#0 E:\XAMPP\htdocs\wordpress\wp-includes\template-loader.php(106): include()
+#1 E:\XAMPP\htdocs\wordpress\wp-blog-header.php(19): require_once('E:\\XAMPP\\htdocs...')
+#2 E:\XAMPP\htdocs\wordpress\index.php(17): require('E:\\XAMPP\\htdocs...')
+#3 {main}
+  thrown in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php on line 240
+
+2020-06-12T02:34:50+00:00 CRITICAL Uncaught Error: Cannot use object of type WC_Shipping_Rate as array in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php:240
+Stack trace:
+#0 E:\XAMPP\htdocs\wordpress\wp-includes\template-loader.php(106): include()
+#1 E:\XAMPP\htdocs\wordpress\wp-blog-header.php(19): require_once('E:\\XAMPP\\htdocs...')
+#2 E:\XAMPP\htdocs\wordpress\index.php(17): require('E:\\XAMPP\\htdocs...')
+#3 {main}
+  thrown in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php on line 240
+
+2020-06-12T02:41:08+00:00 CRITICAL Uncaught Error: Object of class WC_Shipping_Rate could not be converted to string in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php:258
+Stack trace:
+#0 E:\XAMPP\htdocs\wordpress\wp-includes\template-loader.php(106): include()
+#1 E:\XAMPP\htdocs\wordpress\wp-blog-header.php(19): require_once('E:\\XAMPP\\htdocs...')
+#2 E:\XAMPP\htdocs\wordpress\index.php(17): require('E:\\XAMPP\\htdocs...')
+#3 {main}
+  thrown in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php on line 258
+
+2020-06-12T03:09:42+00:00 CRITICAL Uncaught Error: Call to a member function get_total() on string in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php:306
+Stack trace:
+#0 E:\XAMPP\htdocs\wordpress\wp-includes\template-loader.php(106): include()
+#1 E:\XAMPP\htdocs\wordpress\wp-blog-header.php(19): require_once('E:\\XAMPP\\htdocs...')
+#2 E:\XAMPP\htdocs\wordpress\index.php(17): require('E:\\XAMPP\\htdocs...')
+#3 {main}
+  thrown in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php on line 306
+
+2020-06-12T03:10:42+00:00 CRITICAL Uncaught Error: Call to a member function get_total() on null in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php:306
+Stack trace:
+#0 E:\XAMPP\htdocs\wordpress\wp-includes\template-loader.php(106): include()
+#1 E:\XAMPP\htdocs\wordpress\wp-blog-header.php(19): require_once('E:\\XAMPP\\htdocs...')
+#2 E:\XAMPP\htdocs\wordpress\index.php(17): require('E:\\XAMPP\\htdocs...')
+#3 {main}
+  thrown in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php on line 306
+
+2020-06-12T03:16:36+00:00 CRITICAL Uncaught Error: Call to protected method WC_Cart::get_totals_var() from context '' in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php:306
+Stack trace:
+#0 E:\XAMPP\htdocs\wordpress\wp-includes\template-loader.php(106): include()
+#1 E:\XAMPP\htdocs\wordpress\wp-blog-header.php(19): require_once('E:\\XAMPP\\htdocs...')
+#2 E:\XAMPP\htdocs\wordpress\index.php(17): require('E:\\XAMPP\\htdocs...')
+#3 {main}
+  thrown in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php on line 306
+
+2020-06-12T03:18:13+00:00 CRITICAL syntax error, unexpected ';', expecting ')' in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php on line 306
+
