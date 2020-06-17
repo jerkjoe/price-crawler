@@ -1,0 +1,80 @@
+2020-06-18T04:30:09+00:00 CRITICAL syntax error, unexpected ';', expecting ')' in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page.php on line 32
+
+2020-06-18T04:31:37+00:00 CRITICAL syntax error, unexpected 'print_r' (T_STRING) in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page.php on line 34
+
+2020-06-18T04:41:24+00:00 CRITICAL Uncaught Error: Cannot use object of type WP_Term as array in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page.php:34
+Stack trace:
+#0 E:\XAMPP\htdocs\wordpress\wp-includes\template-loader.php(106): include()
+#1 E:\XAMPP\htdocs\wordpress\wp-blog-header.php(19): require_once('E:\\XAMPP\\htdocs...')
+#2 E:\XAMPP\htdocs\wordpress\index.php(17): require('E:\\XAMPP\\htdocs...')
+#3 {main}
+  thrown in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page.php on line 34
+
+2020-06-18T04:41:31+00:00 CRITICAL Uncaught Error: Cannot use object of type WP_Term as array in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page.php:34
+Stack trace:
+#0 E:\XAMPP\htdocs\wordpress\wp-includes\template-loader.php(106): include()
+#1 E:\XAMPP\htdocs\wordpress\wp-blog-header.php(19): require_once('E:\\XAMPP\\htdocs...')
+#2 E:\XAMPP\htdocs\wordpress\index.php(17): require('E:\\XAMPP\\htdocs...')
+#3 {main}
+  thrown in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page.php on line 34
+
+2020-06-18T04:42:15+00:00 CRITICAL Uncaught Error: Cannot use object of type WP_Term as array in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page.php:34
+Stack trace:
+#0 E:\XAMPP\htdocs\wordpress\wp-includes\template-loader.php(106): include()
+#1 E:\XAMPP\htdocs\wordpress\wp-blog-header.php(19): require_once('E:\\XAMPP\\htdocs...')
+#2 E:\XAMPP\htdocs\wordpress\index.php(17): require('E:\\XAMPP\\htdocs...')
+#3 {main}
+  thrown in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page.php on line 34
+
+2020-06-18T04:48:14+00:00 CRITICAL Uncaught Error: Call to undefined function woocommerce_category_thumbnail() in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page.php:35
+Stack trace:
+#0 E:\XAMPP\htdocs\wordpress\wp-includes\template-loader.php(106): include()
+#1 E:\XAMPP\htdocs\wordpress\wp-blog-header.php(19): require_once('E:\\XAMPP\\htdocs...')
+#2 E:\XAMPP\htdocs\wordpress\index.php(17): require('E:\\XAMPP\\htdocs...')
+#3 {main}
+  thrown in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page.php on line 35
+
+2020-06-18T04:57:51+00:00 CRITICAL syntax error, unexpected ';', expecting ')' in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page.php on line 40
+
+2020-06-18T04:59:22+00:00 CRITICAL syntax error, unexpected 'foreach' (T_FOREACH) in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page.php on line 45
+
+2020-06-18T05:09:39+00:00 CRITICAL Uncaught Error: Object of class WP_Term could not be converted to string in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page.php:73
+Stack trace:
+#0 E:\XAMPP\htdocs\wordpress\wp-includes\template-loader.php(106): include()
+#1 E:\XAMPP\htdocs\wordpress\wp-blog-header.php(19): require_once('E:\\XAMPP\\htdocs...')
+#2 E:\XAMPP\htdocs\wordpress\index.php(17): require('E:\\XAMPP\\htdocs...')
+#3 {main}
+  thrown in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page.php on line 73
+
+2020-06-18T05:10:07+00:00 CRITICAL Uncaught Error: Object of class WP_Error could not be converted to string in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page.php:76
+Stack trace:
+#0 E:\XAMPP\htdocs\wordpress\wp-includes\template-loader.php(106): include()
+#1 E:\XAMPP\htdocs\wordpress\wp-blog-header.php(19): require_once('E:\\XAMPP\\htdocs...')
+#2 E:\XAMPP\htdocs\wordpress\index.php(17): require('E:\\XAMPP\\htdocs...')
+#3 {main}
+  thrown in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page.php on line 76
+
+2020-06-18T05:10:20+00:00 CRITICAL Uncaught Error: Object of class WP_Error could not be converted to string in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page.php:76
+Stack trace:
+#0 E:\XAMPP\htdocs\wordpress\wp-includes\template-loader.php(106): include()
+#1 E:\XAMPP\htdocs\wordpress\wp-blog-header.php(19): require_once('E:\\XAMPP\\htdocs...')
+#2 E:\XAMPP\htdocs\wordpress\index.php(17): require('E:\\XAMPP\\htdocs...')
+#3 {main}
+  thrown in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page.php on line 76
+
+2020-06-18T22:07:19+00:00 CRITICAL Uncaught Error: Call to undefined method Automattic\WooCommerce\Admin\Overrides\Order::get_product() in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\woocommerce\myaccount\orders.php:74
+Stack trace:
+#0 E:\XAMPP\htdocs\wordpress\wp-content\plugins\woocommerce\includes\wc-core-functions.php(251): include()
+#1 E:\XAMPP\htdocs\wordpress\wp-content\plugins\woocommerce\includes\wc-template-functions.php(3073): wc_get_template('myaccount/order...', Array)
+#2 E:\XAMPP\htdocs\wordpress\wp-includes\class-wp-hook.php(287): woocommerce_account_orders(1)
+#3 E:\XAMPP\htdocs\wordpress\wp-includes\class-wp-hook.php(311): WP_Hook->apply_filters('', Array)
+#4 E:\XAMPP\htdocs\wordpress\wp-includes\plugin.php(478): WP_Hook->do_action(Array)
+#5 E:\XAMPP\htdocs\wordpress\wp-content\plugins\woocommerce\includes\shortcodes\class-wc-shortcode-my-account.php(91): do_action('woocommerce_acc...', '')
+#6 E:\XAMPP\htdocs\wordpress\wp-content\plugins\woocommerce\includes\class-wc-shortcodes.php(72): WC_Shortcode_My_Account::outp in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\woocommerce\myaccount\orders.php on line 74
+
+2020-06-18T23:46:39+00:00 CRITICAL syntax error, unexpected 'default' (T_DEFAULT) in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\woocommerce\myaccount\orders.php on line 38
+
+2020-06-18T23:47:02+00:00 CRITICAL syntax error, unexpected 'default' (T_DEFAULT) in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\woocommerce\myaccount\orders.php on line 39
+
+2020-06-18T23:51:04+00:00 CRITICAL syntax error, unexpected ';', expecting ')' in E:\XAMPP\htdocs\wordpress\wp-content\themes\twentytwenty\page-checkout.php on line 15
+
