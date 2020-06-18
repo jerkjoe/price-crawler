@@ -24,7 +24,40 @@ do_action( 'woocommerce_before_edit_account_address_form' ); ?>
 <?php if ( ! $load_address ) : ?>
 	<?php wc_get_template( 'myaccount/my-address.php' ); ?>
 <?php else : ?>
-
+    <style>
+        .woocommerce h3 {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .woocommerce-address-fields__field-wrapper {
+            
+        }
+        .woocommerce-address-fields__field-wrapper > p {
+            width: 100% !important;
+            display: flex;
+            padding: 0 20px;
+            align-items: center;
+            border-bottom: 1px solid #e3e3e3;
+        }
+        .woocommerce-address-fields__field-wrapper > p > label{
+            width: 160px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .woocommerce form .form-row .input-text, .woocommerce-page form .form-row .input-text {
+            border: none;
+            outline: none;
+            font-size: 12px;
+            padding: 0 0;
+            margin-bottom: 0.5rem;
+        }
+        #billing_address_2_field > span, #shipping_address_2_field > span {
+            width: 100%;
+        }
+        .woocommerce form .form-row select, .woocommerce-page form .form-row select {
+            font-size: 12px;
+        }
+    </style>
 	<form method="post">
 
 		<h3><?php echo apply_filters( 'woocommerce_my_account_edit_address_title', $page_title, $load_address ); ?></h3><?php // @codingStandardsIgnoreLine ?>
@@ -42,7 +75,7 @@ do_action( 'woocommerce_before_edit_account_address_form' ); ?>
 
 			<?php do_action( "woocommerce_after_edit_address_form_{$load_address}" ); ?>
 
-			<p>
+			<p style="text-align: center;">
 				<button type="submit" class="button" name="save_address" value="<?php esc_attr_e( 'Save address', 'woocommerce' ); ?>"><?php esc_html_e( 'Save address', 'woocommerce' ); ?></button>
 				<?php wp_nonce_field( 'woocommerce-edit_address', 'woocommerce-edit-address-nonce' ); ?>
 				<input type="hidden" name="action" value="edit_address" />

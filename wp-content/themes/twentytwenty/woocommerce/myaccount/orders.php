@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Orders
  *
@@ -17,184 +18,379 @@
  * @version 3.7.0
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
-do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
+do_action('woocommerce_before_account_orders', $has_orders); ?>
 
-<?php if ( $has_orders ) : 
-    
+
+
+<style>
+    .order-row {
+        padding: 10px;
+        border-bottom: 10px solid #f0f2f5;
+    }
+
+    .order-row>.top {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        color: #666;
+    }
+
+    .mid {
+        padding: 20px 0;
+        background-color: #fafafa;
+        text-decoration: none;
+        display: block;
+    }
+
+    .item-image {
+        width: 50px;
+    }
+
+    .bottom {
+        text-align: right;
+        font-size: 12px;
+        color: #777;
+    }
+
+    .actions-container {
+        border-top: 1px solid #e3e3e3;
+        margin-top: 10px;
+        text-align: right;
+    }
+
+    .action-btn {
+        font-size: 14px;
+        min-width: 60px;
+        text-align: center;
+        color: #333;
+        padding: 4px 8px;
+        display: inline-block;
+        margin: 10px 10px 0;
+        border: 1px solid #777;
+        text-decoration: none;
+    }
+
+    .action-btn.pay {
+        color: #fa800a;
+        border-color: #fa800a;
+    }
+</style>
+
+
+<?php if ($has_orders) :
+
+
+
+
     $queries = array();
     parse_str($_SERVER['QUERY_STRING'], $queries);
-    // echo $queries['category'];
-    
-    if($queries['category'] != '') {
+
+    if ($queries['category'] != '') {
         $desire_status = '';
         switch ($queries['category']) {
             case 'processing':
                 $desire_status = 'processing';
                 break;
-            
+            case 'pending':
+                $desire_status = 'pending';
+                break;
+            case 'complete':
+                $desire_status = 'completed';
+                break;
             default:
                 # code...
                 break;
         }
-        
-        
-            
-        $allOrders = $customer_orders->orders;
-        $allOrders = array_filter($allOrders, function($order) use ($desire_status){
-            // echo $order->get_status();
-            return $order->get_status() == $desire_status;
-        });
-        
-        ?>
-        
+
+
+        // echo $desire_status;
+        // // $allOrders = $customer_orders->orders;
+        // // $allOrders = $customer_orders;
+        // // $allOrders = array_filter($allOrders, function ($order) use ($desire_status) {
+        // //     echo $order->get_status();
+        // //     echo "<br><br>";
+        // //     return $order->get_status() == ;
+        // // });
+        // echo $desire_status;
+        $allOrders = wc_get_orders(
+            array(
+                'status' => $desire_status,
+                'limit' => -1,
+            )
+        );
+        // print_r($allOrders);
+?>
+
+        <div class="order-container">
+            <?php
+            foreach ($allOrders as $customer_order) {
+                $order      = wc_get_order($customer_order); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.OverrideProhibited
+                $item_count = $order->get_item_count() - $order->get_item_count_refunded();
+            ?>
+                <!-- Start -->
+
+                <?php
+                $order_url = $order->get_view_order_url();
+                $order_number = $order->get_order_number();
+                $order_status = wc_get_order_status_name($order->get_status());
+                $order_thumbnails = "";
+                $order_created_time = wc_format_datetime($order->get_date_created());
+                $items_in_order = $order->get_items();
+                $total = $order->get_formatted_order_total();
+                $subtotal = $order->get_subtotal();
+                $shipping_cost = $order->get_shipping_total();
+                $count = 0;
+                foreach ($items_in_order as $key => $value) {
+                    # code...
+                    $count++;
+                    if ($count > 1) {
+                        break;
+                    }
+                    $order_thumbnails = wp_get_attachment_image_src(get_post_thumbnail_id($value["product_id"]),  'single-post-thumbnail')[0];
+                    // print_r(wp_get_attachment_image_src(get_post_thumbnail_id($value["product_id"]),  'single-post-thumbnail' )[0]);
+                }
+
+                ?>
+
+                <div class="order-row">
+                    <div class="top">
+                        <div class="left">
+                            订单号：
+                            <?php echo ($order_number); ?>
+                        </div>
+                        <div class="right">
+                            <?php echo ($order_status); ?>
+                        </div>
+                    </div>
+                    <a href="<?php echo ($order_url); ?>" class="mid">
+                        <div class="item-image">
+                            <img src="<?php echo ($order_thumbnails); ?>" alt="<?php echo ($order_number); ?>" />
+                        </div>
+                    </a>
+                    <div class="bottom">
+                        （共计<?php echo ($item_count); ?>件商品） 合计：<?php echo ($total); ?>（含运费：<?php echo ($shipping_cost); ?>）
+                    </div>
+                    <div class="actions-container">
+                        <?php
+                        $actions = wc_get_account_orders_actions($order);
+
+                        if (!empty($actions)) {
+                            foreach ($actions as $key => $action) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.OverrideProhibited
+                                if ($action['name'] === "View") {
+                                    continue;
+                                }
+                                echo '<a href="' . esc_url($action['url']) . '" class="action-btn ' . ($action['name'] === "Pay" ? "pay " : "") . sanitize_html_class($key) . '">' . esc_html($action['name']) . '</a>';
+                            }
+                        }
+                        ?>
+                    </div>
+
+                </div>
+
+
+
+
+
+                <!-- End -->
+            <?php
+            }
+            ?>
+        </div>
         <table class="woocommerce-orders-table woocommerce-MyAccount-orders shop_table shop_table_responsive my_account_orders account-orders-table">
-		<thead>
-			<tr>
-				<?php foreach ( wc_get_account_orders_columns() as $column_id => $column_name ) : ?>
-					<th class="woocommerce-orders-table__header woocommerce-orders-table__header-<?php echo esc_attr( $column_id ); ?>"><span class="nobr"><?php echo esc_html( $column_name ); ?></span></th>
-				<?php endforeach; ?>
-			</tr>
-		</thead>
+            <thead>
+                <tr>
+                    <?php foreach (wc_get_account_orders_columns() as $column_id => $column_name) : ?>
+                        <th class="woocommerce-orders-table__header woocommerce-orders-table__header-<?php echo esc_attr($column_id); ?>"><span class="nobr"><?php echo esc_html($column_name); ?></span></th>
+                    <?php endforeach; ?>
+                </tr>
+            </thead>
 
-		<tbody>
-			<?php
-			foreach ( $allOrders as $customer_order ) {
-				$order      = wc_get_order( $customer_order ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.OverrideProhibited
-				$item_count = $order->get_item_count() - $order->get_item_count_refunded();
-				?>
-				<tr class="woocommerce-orders-table__row woocommerce-orders-table__row--status-<?php echo esc_attr( $order->get_status() ); ?> order">
-					<?php foreach ( wc_get_account_orders_columns() as $column_id => $column_name ) : ?>
-						<td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-<?php echo esc_attr( $column_id ); ?>" data-title="<?php echo esc_attr( $column_name ); ?>">
-							<?php if ( has_action( 'woocommerce_my_account_my_orders_column_' . $column_id ) ) : ?>
-								<?php do_action( 'woocommerce_my_account_my_orders_column_' . $column_id, $order ); ?>
+            <tbody>
+                <?php
+                foreach ($allOrders as $customer_order) {
+                    $order      = wc_get_order($customer_order); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.OverrideProhibited
+                    $item_count = $order->get_item_count() - $order->get_item_count_refunded();
+                ?>
+                    <!-- Start -->
 
-							<?php elseif ( 'order-number' === $column_id ) : ?>
-								<a href="<?php echo esc_url( $order->get_view_order_url() ); ?>">
-									<?php echo esc_html( _x( '#', 'hash before order number', 'woocommerce' ) . $order->get_order_number() ); ?>
-								</a>
+                    <!-- End -->
+                <?php
+                }
+                ?>
+            </tbody>
+        </table>
 
-							<?php elseif ( 'order-date' === $column_id ) : ?>
-								<time datetime="<?php echo esc_attr( $order->get_date_created()->date( 'c' ) ); ?>"><?php echo esc_html( wc_format_datetime( $order->get_date_created() ) ); ?></time>
 
-							<?php elseif ( 'order-status' === $column_id ) : ?>
-								<?php echo esc_html( wc_get_order_status_name( $order->get_status() ) ); ?>
+    <?php
 
-							<?php elseif ( 'order-total' === $column_id ) : ?>
-								<?php
-								/* translators: 1: formatted order total 2: total order items */
-								echo wp_kses_post( sprintf( _n( '%1$s for %2$s item', '%1$s for %2$s items', $item_count, 'woocommerce' ), $order->get_formatted_order_total(), $item_count ) );
-								?>
 
-							<?php elseif ( 'order-actions' === $column_id ) : ?>
-								<?php
-								$actions = wc_get_account_orders_actions( $order );
 
-								if ( ! empty( $actions ) ) {
-									foreach ( $actions as $key => $action ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.OverrideProhibited
-										echo '<a href="' . esc_url( $action['url'] ) . '" class="woocommerce-button button ' . sanitize_html_class( $key ) . '">' . esc_html( $action['name'] ) . '</a>';
-									}
-								}
-								?>
-							<?php endif; ?>
-						</td>
-					<?php endforeach; ?>
-				</tr>
-				<?php
-			}
-			?>
-		</tbody>
-	</table>
-        
-        
-        <?php
-        
-        
-        
     } else {
     ?>
-    
-    
-	<table class="woocommerce-orders-table woocommerce-MyAccount-orders shop_table shop_table_responsive my_account_orders account-orders-table">
-		<thead>
-			<tr>
-				<?php foreach ( wc_get_account_orders_columns() as $column_id => $column_name ) : ?>
-					<th class="woocommerce-orders-table__header woocommerce-orders-table__header-<?php echo esc_attr( $column_id ); ?>"><span class="nobr"><?php echo esc_html( $column_name ); ?></span></th>
-				<?php endforeach; ?>
-			</tr>
-		</thead>
 
-		<tbody>
-			<?php
-			foreach ( $customer_orders->orders as $customer_order ) {
-				$order      = wc_get_order( $customer_order ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.OverrideProhibited
-				$item_count = $order->get_item_count() - $order->get_item_count_refunded();
-				?>
-				<tr class="woocommerce-orders-table__row woocommerce-orders-table__row--status-<?php echo esc_attr( $order->get_status() ); ?> order">
-					<?php foreach ( wc_get_account_orders_columns() as $column_id => $column_name ) : ?>
-						<td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-<?php echo esc_attr( $column_id ); ?>" data-title="<?php echo esc_attr( $column_name ); ?>">
-							<?php if ( has_action( 'woocommerce_my_account_my_orders_column_' . $column_id ) ) : ?>
-								<?php do_action( 'woocommerce_my_account_my_orders_column_' . $column_id, $order ); ?>
+        <div class="order-container">
+            <?php
+            // $allOrders = $customer_orders->orders;
+            $allOrders = wc_get_orders(
+                array(
+                    'limit' => -1,
+                )
+            );
+            foreach ($allOrders as $customer_order) {
+                $order      = wc_get_order($customer_order); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.OverrideProhibited
+                $item_count = $order->get_item_count() - $order->get_item_count_refunded();
+            ?>
+                <!-- Start -->
 
-							<?php elseif ( 'order-number' === $column_id ) : ?>
-								<a href="<?php echo esc_url( $order->get_view_order_url() ); ?>">
-									<?php echo esc_html( _x( '#', 'hash before order number', 'woocommerce' ) . $order->get_order_number() ); ?>
-								</a>
+                <?php
+                $order_url = $order->get_view_order_url();
+                $order_number = $order->get_order_number();
+                $order_status = wc_get_order_status_name($order->get_status());
+                $order_thumbnails = "";
+                $order_created_time = wc_format_datetime($order->get_date_created());
+                $items_in_order = $order->get_items();
+                $total = $order->get_formatted_order_total();
+                $subtotal = $order->get_subtotal();
+                $shipping_cost = $order->get_shipping_total();
+                $count = 0;
+                foreach ($items_in_order as $key => $value) {
+                    # code...
+                    $count++;
+                    if ($count > 1) {
+                        break;
+                    }
+                    $order_thumbnails = wp_get_attachment_image_src(get_post_thumbnail_id($value["product_id"]),  'single-post-thumbnail')[0];
+                    // print_r(wp_get_attachment_image_src(get_post_thumbnail_id($value["product_id"]),  'single-post-thumbnail' )[0]);
+                }
 
-							<?php elseif ( 'order-date' === $column_id ) : ?>
-								<time datetime="<?php echo esc_attr( $order->get_date_created()->date( 'c' ) ); ?>"><?php echo esc_html( wc_format_datetime( $order->get_date_created() ) ); ?></time>
+                ?>
 
-							<?php elseif ( 'order-status' === $column_id ) : ?>
-								<?php echo esc_html( wc_get_order_status_name( $order->get_status() ) ); ?>
+                <div class="order-row">
+                    <div class="top">
+                        <div class="left">
+                            订单号：
+                            <?php echo ($order_number); ?>
+                        </div>
+                        <div class="right">
+                            <?php echo ($order_status); ?>
+                        </div>
+                    </div>
+                    <a href="<?php echo ($order_url); ?>" class="mid">
+                        <div class="item-image">
+                            <img src="<?php echo ($order_thumbnails); ?>" alt="<?php echo ($order_number); ?>" />
+                        </div>
+                    </a>
+                    <div class="bottom">
+                        （共计<?php echo ($item_count); ?>件商品） 合计：<?php echo ($total); ?>（含运费：<?php echo ($shipping_cost); ?>）
+                    </div>
+                    <div class="actions-container">
+                        <?php
+                        $actions = wc_get_account_orders_actions($order);
 
-							<?php elseif ( 'order-total' === $column_id ) : ?>
-								<?php
-								/* translators: 1: formatted order total 2: total order items */
-								echo wp_kses_post( sprintf( _n( '%1$s for %2$s item', '%1$s for %2$s items', $item_count, 'woocommerce' ), $order->get_formatted_order_total(), $item_count ) );
-								?>
+                        if (!empty($actions)) {
+                            foreach ($actions as $key => $action) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.OverrideProhibited
+                                if ($action['name'] === "View") {
+                                    continue;
+                                }
+                                echo '<a href="' . esc_url($action['url']) . '" class="action-btn ' . ($action['name'] === "Pay" ? "pay " : "") . sanitize_html_class($key) . '">' . esc_html($action['name']) . '</a>';
+                            }
+                        }
+                        ?>
+                    </div>
 
-							<?php elseif ( 'order-actions' === $column_id ) : ?>
-								<?php
-								$actions = wc_get_account_orders_actions( $order );
+                </div>
 
-								if ( ! empty( $actions ) ) {
-									foreach ( $actions as $key => $action ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.OverrideProhibited
-										echo '<a href="' . esc_url( $action['url'] ) . '" class="woocommerce-button button ' . sanitize_html_class( $key ) . '">' . esc_html( $action['name'] ) . '</a>';
-									}
-								}
-								?>
-							<?php endif; ?>
-						</td>
-					<?php endforeach; ?>
-				</tr>
-				<?php
-			}
-			?>
-		</tbody>
-	</table>
 
-	<?php do_action( 'woocommerce_before_account_orders_pagination' ); ?>
 
-	<?php if ( 1 < $customer_orders->max_num_pages ) : ?>
-		<div class="woocommerce-pagination woocommerce-pagination--without-numbers woocommerce-Pagination">
-			<?php if ( 1 !== $current_page ) : ?>
-				<a class="woocommerce-button woocommerce-button--previous woocommerce-Button woocommerce-Button--previous button" href="<?php echo esc_url( wc_get_endpoint_url( 'orders', $current_page - 1 ) ); ?>"><?php esc_html_e( 'Previous', 'woocommerce' ); ?></a>
-			<?php endif; ?>
 
-			<?php if ( intval( $customer_orders->max_num_pages ) !== $current_page ) : ?>
-				<a class="woocommerce-button woocommerce-button--next woocommerce-Button woocommerce-Button--next button" href="<?php echo esc_url( wc_get_endpoint_url( 'orders', $current_page + 1 ) ); ?>"><?php esc_html_e( 'Next', 'woocommerce' ); ?></a>
-			<?php endif; ?>
-		</div>
-	<?php endif; ?>
 
-<?php } else : ?>
-	<div class="woocommerce-message woocommerce-message--info woocommerce-Message woocommerce-Message--info woocommerce-info">
-		<a class="woocommerce-Button button" href="<?php echo esc_url( apply_filters( 'woocommerce_return_to_shop_redirect', wc_get_page_permalink( 'shop' ) ) ); ?>">
-			<?php esc_html_e( 'Browse products', 'woocommerce' ); ?>
-		</a>
-		<?php esc_html_e( 'No order has been made yet.', 'woocommerce' ); ?>
-	</div>
+                <!-- End -->
+            <?php
+            }
+            ?>
+        </div>
+
+        <table class="woocommerce-orders-table woocommerce-MyAccount-orders shop_table shop_table_responsive my_account_orders account-orders-table" style="display: none;">
+            <thead>
+                <tr>
+                    <?php foreach (wc_get_account_orders_columns() as $column_id => $column_name) : ?>
+                        <th class="woocommerce-orders-table__header woocommerce-orders-table__header-<?php echo esc_attr($column_id); ?>"><span class="nobr"><?php echo esc_html($column_name); ?></span></th>
+                    <?php endforeach; ?>
+                </tr>
+            </thead>
+
+            <tbody>
+                <?php
+                foreach ($customer_orders->orders as $customer_order) {
+                    $order      = wc_get_order($customer_order); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.OverrideProhibited
+                    $item_count = $order->get_item_count() - $order->get_item_count_refunded();
+                ?>
+                    <tr class="woocommerce-orders-table__row woocommerce-orders-table__row--status-<?php echo esc_attr($order->get_status()); ?> order">
+                        <?php foreach (wc_get_account_orders_columns() as $column_id => $column_name) : ?>
+                            <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-<?php echo esc_attr($column_id); ?>" data-title="<?php echo esc_attr($column_name); ?>">
+                                <?php if (has_action('woocommerce_my_account_my_orders_column_' . $column_id)) : ?>
+                                    <?php do_action('woocommerce_my_account_my_orders_column_' . $column_id, $order); ?>
+
+                                <?php elseif ('order-number' === $column_id) : ?>
+                                    <a href="<?php echo esc_url($order->get_view_order_url()); ?>">
+                                        <?php echo esc_html(_x('#', 'hash before order number', 'woocommerce') . $order->get_order_number()); ?>
+                                    </a>
+
+                                <?php elseif ('order-date' === $column_id) : ?>
+                                    <time datetime="<?php echo esc_attr($order->get_date_created()->date('c')); ?>"><?php echo esc_html(wc_format_datetime($order->get_date_created())); ?></time>
+
+                                <?php elseif ('order-status' === $column_id) : ?>
+                                    <?php echo esc_html(wc_get_order_status_name($order->get_status())); ?>
+
+                                <?php elseif ('order-total' === $column_id) : ?>
+                                    <?php
+                                    /* translators: 1: formatted order total 2: total order items */
+                                    echo wp_kses_post(sprintf(_n('%1$s for %2$s item', '%1$s for %2$s items', $item_count, 'woocommerce'), $order->get_formatted_order_total(), $item_count));
+                                    ?>
+
+                                <?php elseif ('order-actions' === $column_id) : ?>
+                                    <?php
+                                    $actions = wc_get_account_orders_actions($order);
+
+                                    if (!empty($actions)) {
+                                        foreach ($actions as $key => $action) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.OverrideProhibited
+                                            echo '<a href="' . esc_url($action['url']) . '" class="woocommerce-button button ' . sanitize_html_class($key) . '">' . esc_html($action['name']) . '</a>';
+                                        }
+                                    }
+                                    ?>
+                                <?php endif; ?>
+                            </td>
+                        <?php endforeach; ?>
+                    </tr>
+                <?php
+                }
+                ?>
+            </tbody>
+        </table>
+
+        <?php do_action('woocommerce_before_account_orders_pagination'); ?>
+
+        <?php if (1 < $customer_orders->max_num_pages && false) : ?>
+            <div class="woocommerce-pagination woocommerce-pagination--without-numbers woocommerce-Pagination">
+                <?php if (1 !== $current_page) : ?>
+                    <a class="woocommerce-button woocommerce-button--previous woocommerce-Button woocommerce-Button--previous button" href="<?php echo esc_url(wc_get_endpoint_url('orders', $current_page - 1)); ?>"><?php esc_html_e('Previous', 'woocommerce'); ?></a>
+                <?php endif; ?>
+
+                <?php if (intval($customer_orders->max_num_pages) !== $current_page) : ?>
+                    <a class="woocommerce-button woocommerce-button--next woocommerce-Button woocommerce-Button--next button" href="<?php echo esc_url(wc_get_endpoint_url('orders', $current_page + 1)); ?>"><?php esc_html_e('Next', 'woocommerce'); ?></a>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
+
+    <?php } else : ?>
+    <div class="woocommerce-message woocommerce-message--info woocommerce-Message woocommerce-Message--info woocommerce-info">
+        <a class="woocommerce-Button button" href="<?php echo esc_url(apply_filters('woocommerce_return_to_shop_redirect', wc_get_page_permalink('shop'))); ?>">
+            <?php esc_html_e('Browse products', 'woocommerce'); ?>
+        </a>
+        <?php esc_html_e('No order has been made yet.', 'woocommerce'); ?>
+    </div>
 <?php endif; ?>
 
-<?php do_action( 'woocommerce_after_account_orders', $has_orders ); ?>
+<?php do_action('woocommerce_after_account_orders', $has_orders); ?>

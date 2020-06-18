@@ -11,7 +11,9 @@ while (have_posts()) : the_post(); ?>
 // print_r($enabled_gateways);
 
 $a = 'order-received';
-if (strpos($_SERVER['REQUEST_URI'], $a) === true) {
+if (strpos($_SERVER['REQUEST_URI'], $a) !== false) {
+    echo '<style>.my-checkout{display: none;}</style>';
+} else if(strpos($_SERVER['REQUEST_URI'], "order-pay") !== false) {
     echo '<style>.my-checkout{display: none;}</style>';
 } else {
     echo '<style>.page-container {

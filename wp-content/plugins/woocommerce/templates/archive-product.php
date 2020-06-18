@@ -215,6 +215,7 @@ if ($queries['category'] != '') {
 
     <script>
         var categories = <?php echo json_encode($product_cat) ?>;
+        categories = categories.filter(cate => cate.name !== 'Uncategorized')
         var pre = null
         document.addEventListener('DOMContentLoaded', function() {
             console.log(123123123)
