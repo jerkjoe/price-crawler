@@ -35,10 +35,13 @@ $test_img = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOA
 ?>
 <style>
     #site-header,
+    #site-footer,
     .header-gap {
         display: none;
     }
-
+    .yith-wcwl-wishlistexistsbrowse {
+        text-align: center;
+    }
     .product-detail-tab {
         display: flex;
         justify-content: space-between;
@@ -199,6 +202,9 @@ $test_img = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOA
             <!-- price -->
             <p class="product-price">
                 <?php echo ($product->get_price_html()); ?>
+            </p>
+            <p>
+                <?php echo do_shortcode("[yith_wcwl_add_to_wishlist]"); ?>
             </p>
         </div>
     </section>

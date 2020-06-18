@@ -19,7 +19,7 @@ echo do_shortcode($slider);
 ?>
 <main id="site-content" role="main">
     <?php
-    $allCategories = get_field('horizontal_bar');
+    $allCategories = get_field('horizontal_bar') ? get_field('horizontal_bar') : [];
     function get_product_category_by_id($category_id)
     {
         $term = get_term_by('id', $category_id, 'product_cat', 'ARRAY_A');
@@ -65,7 +65,7 @@ echo do_shortcode($slider);
 
     <?php
 
-    $allVedrticalCategories = get_field('vertical_bar');
+    $allVedrticalCategories = get_field('vertical_bar') ? get_field('vertical_bar') : [];
 
     foreach ($allVedrticalCategories as $key => $value) {
         # code...
@@ -195,6 +195,8 @@ echo do_shortcode($slider);
 </main><!-- #site-content -->
 
 <?php // get_template_part('template-parts/footer-menus-widgets'); 
+    // the_content();
+    
 ?>
 
 <?php get_footer(); ?>
