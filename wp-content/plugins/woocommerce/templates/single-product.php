@@ -33,7 +33,7 @@ $test_img = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOA
  */
 // do_action( 'woocommerce_before_main_content' );
 ?>
-<style>
+<style> 
     #site-header,
     #site-footer,
     .header-gap {
