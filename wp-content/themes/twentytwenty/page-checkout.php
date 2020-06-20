@@ -264,6 +264,7 @@ if (strpos($_SERVER['REQUEST_URI'], $a) !== false) {
         */
             // Page code here...
             $allItems = WC()->cart->get_cart();
+            print_r(end($allItems));
             $resultArr = [];
             $max = 4;
             $totalItems = sizeof(WC()->cart->get_cart());

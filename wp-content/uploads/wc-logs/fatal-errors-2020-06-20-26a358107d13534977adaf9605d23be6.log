@@ -1,0 +1,32 @@
+2020-06-20T19:24:03+00:00 CRITICAL Uncaught Error: Cannot use object of type WC_Product_Variable as array in E:\XAMPP\htdocs\wordpress\wp-content\plugins\woocommerce\templates\single-product.php:210
+Stack trace:
+#0 E:\XAMPP\htdocs\wordpress\wp-includes\template-loader.php(106): include()
+#1 E:\XAMPP\htdocs\wordpress\wp-blog-header.php(19): require_once('E:\\XAMPP\\htdocs...')
+#2 E:\XAMPP\htdocs\wordpress\index.php(17): require('E:\\XAMPP\\htdocs...')
+#3 {main}
+  thrown in E:\XAMPP\htdocs\wordpress\wp-content\plugins\woocommerce\templates\single-product.php on line 210
+
+2020-06-20T19:24:15+00:00 CRITICAL Uncaught Error: Cannot use object of type WC_Product_Variable as array in E:\XAMPP\htdocs\wordpress\wp-content\plugins\woocommerce\templates\single-product.php:210
+Stack trace:
+#0 E:\XAMPP\htdocs\wordpress\wp-includes\template-loader.php(106): include()
+#1 E:\XAMPP\htdocs\wordpress\wp-blog-header.php(19): require_once('E:\\XAMPP\\htdocs...')
+#2 E:\XAMPP\htdocs\wordpress\index.php(17): require('E:\\XAMPP\\htdocs...')
+#3 {main}
+  thrown in E:\XAMPP\htdocs\wordpress\wp-content\plugins\woocommerce\templates\single-product.php on line 210
+
+2020-06-20T19:24:19+00:00 CRITICAL Uncaught Error: Cannot use object of type WC_Product_Variable as array in E:\XAMPP\htdocs\wordpress\wp-content\plugins\woocommerce\templates\single-product.php:210
+Stack trace:
+#0 E:\XAMPP\htdocs\wordpress\wp-includes\template-loader.php(106): include()
+#1 E:\XAMPP\htdocs\wordpress\wp-blog-header.php(19): require_once('E:\\XAMPP\\htdocs...')
+#2 E:\XAMPP\htdocs\wordpress\index.php(17): require('E:\\XAMPP\\htdocs...')
+#3 {main}
+  thrown in E:\XAMPP\htdocs\wordpress\wp-content\plugins\woocommerce\templates\single-product.php on line 210
+
+2020-06-20T19:24:26+00:00 CRITICAL Uncaught Error: Cannot use object of type WC_Product_Variable as array in E:\XAMPP\htdocs\wordpress\wp-content\plugins\woocommerce\templates\single-product.php:210
+Stack trace:
+#0 E:\XAMPP\htdocs\wordpress\wp-includes\template-loader.php(106): include()
+#1 E:\XAMPP\htdocs\wordpress\wp-blog-header.php(19): require_once('E:\\XAMPP\\htdocs...')
+#2 E:\XAMPP\htdocs\wordpress\index.php(17): require('E:\\XAMPP\\htdocs...')
+#3 {main}
+  thrown in E:\XAMPP\htdocs\wordpress\wp-content\plugins\woocommerce\templates\single-product.php on line 210
+
