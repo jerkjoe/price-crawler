@@ -62,6 +62,7 @@ $test_img = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOA
 
     .content-wrapper {
         padding-top: 25px;
+        padding-bottom: 60px;
     }
 
     .content-wrapper>section {
@@ -205,6 +206,9 @@ $test_img = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOA
             </p>
             <p>
                 <?php echo do_shortcode("[yith_wcwl_add_to_wishlist]"); ?>
+            </p>
+            <p>
+                <a href="<?php echo get_site_url() . "/quick-buy/" . $product->id . "/1"; ?>">立即购买</a>
             </p>
         </div>
     </section>
