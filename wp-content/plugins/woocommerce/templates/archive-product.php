@@ -161,7 +161,73 @@ function add_bottom_nav_bar() {
     <?php
 }
 if ($queries['category'] != '') {
-    echo do_shortcode('[product_category category="' . $queries['category'] . '" per_page="2" columns="3" orderby="date" order="desc" paginate=true]');
+    
+    ?>
+    <div class="tabs">
+        <div data-name="default">综合排序</div>
+        <div data-name="price-asce">价格排序</div>
+        <div data-name="date">新品上架</div>
+    </div>
+    <style>
+        .tabs {
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .tabs > div {
+            font-size: 14px;
+        }
+        
+        .woocommerce-ordering {
+            display: none;
+        }
+        .results-container {
+            display: none;
+        }
+        .results-container.active {
+            display: block;
+        }
+    </style>
+    
+    <div class="results-container" id="default">
+        <?php
+            echo do_shortcode('[product_category category="' . $queries['category'] . '" per_page="-1" columns="3" orderby="name" order="asce" paginate=true]');
+        ?>
+    </div>
+    <div class="results-container" id="price-asce">
+        <?php
+            echo do_shortcode('[product_category category="' . $queries['category'] . '" per_page="-1" columns="3" orderby="price" order="asce" paginate=true]');
+        ?>
+    </div>
+    <div class="results-container" id="price-desc">
+        <?php
+            echo do_shortcode('[product_category category="' . $queries['category'] . '" per_page="-1" columns="3" orderby="price" order="desc" paginate=true]');
+        ?>
+    </div>
+    <div class="results-container" id="date">
+        <?php
+            echo do_shortcode('[product_category category="' . $queries['category'] . '" per_page="-1" columns="3" orderby="date" order="asce" paginate=true]');
+        ?>
+    </div>
+    <script>
+        console.log(123)
+        document.addEventListener('DOMContentLoaded', () => {
+            var tabs = Array.from(document.querySelectorAll('.tabs>div'))
+            var prevContainer = document.querySelector('#default')
+            prevContainer.classList.add('active')
+            console.log(tabs)
+            tabs.forEach(tab => {
+                tab.addEventListener('click', e => {
+                    var selector = `#${e.target.dataset.name}`
+                    console.log(selector)
+                    prevContainer.classList.remove('active')
+                    prevContainer = document.querySelector(selector)
+                    prevContainer.classList.add('active')
+                })
+            })
+        })    
+    
+    </script>
+    <?php
     do_action('bottom_nav_bar');
 } else {
 ?>

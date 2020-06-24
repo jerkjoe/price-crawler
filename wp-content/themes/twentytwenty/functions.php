@@ -778,8 +778,7 @@ function custom_redirect_to_checkout() {
     global $woocommerce;
     
     $checkout_url = $woocommerce->cart->get_checkout_url();
-    print_r($_POST);
-    echo("<br><br>".$checkout_url);
+
     // header( "Location: $checkout_url" );
     return $checkout_url;
     // if(!empty($_POST["checkout"])){

@@ -97,7 +97,12 @@ defined('ABSPATH') || exit;
     ?>
     <div class="top-wrapper">
         <div class="user-info">
-            <?php echo (wp_get_current_user()->display_name); ?>
+            <div class="avatar" style="border-radius: 50%; height: 80px; width: 80px; overflow: hidden; margin-bottom: 10px;">
+            <?php echo(get_avatar(wp_get_current_user()->ID));?>
+            </div>
+            <p>
+                <?php echo (wp_get_current_user()->display_name); ?>
+            </p>
         </div>
     </div>
     <div class="content-wrapper">
@@ -163,6 +168,7 @@ defined('ABSPATH') || exit;
             justify-content: center;
             align-items: center;
             color: #fff;
+            flex-direction: column;
         }
 
         .order-bar {

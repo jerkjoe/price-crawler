@@ -172,6 +172,25 @@ $test_img = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOA
     .close-add-to-cart > img {
         display: inline-block;
     }
+    
+    .slider-wrapper {
+        width: 300px;
+        height: 300px;
+        margin: 0 auto;
+    }
+    .flex-viewport {
+        height: 300px !important;
+    }
+    .flex-control-nav {
+        position: absolute;
+        width: 100%;
+        padding-bottom: 10px;
+        bottom: 0;
+    }
+    .flex-control-nav>li {
+        border-radius: 50%;
+        overflow: hidden;
+    }
 </style>
 <div class="product-detail-tab">
     <div class="tab-item" name="item" id="item">
@@ -186,15 +205,18 @@ $test_img = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOA
 </div>
 <div class="content-wrapper">
     <section id="item-content">
+        <div class="slider-wrapper">
         <?php
 
-        global $product;
-        the_post();
+            global $product;
+            the_post();
 
-        // wc_get_template_part('content', 'single-product');
-        // print_r($product->get_description());
-        woocommerce_show_product_images();
+            // wc_get_template_part('content', 'single-product');
+            // print_r($product->get_description());
+            woocommerce_show_product_images();
         ?>
+        </div>
+        
         <div class="product-info-container">
             <!-- name -->
             <h2 class="product-title">
@@ -252,6 +274,12 @@ $test_img = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOA
         document.querySelector('.add-to-cart-container').classList = 'add-to-cart-container'
     }
     document.addEventListener('DOMContentLoaded', function(event) {
+        
+        Array.from(document.querySelectorAll('.flex-control-nav>li>img')).forEach(el => {
+            console.log(el.src)
+            el.src = '<?php echo get_site_url() . '/wp-content/uploads/2020/06/blackback.png';?>'
+        })
+        
         
         var addToCart = document.querySelector('.open-form')
         addToCart.addEventListener('click', function() {
